@@ -43,6 +43,7 @@
         TokenName,
         FnExprTokens,
         Syntax,
+        enumSyntax,
         PlaceHolders,
         Messages,
         Regex,
@@ -169,6 +170,80 @@
         WhileStatement: 'WhileStatement',
         WithStatement: 'WithStatement',
         YieldExpression: 'YieldExpression'
+    };
+
+    enumSyntax = {
+        ArrayExpression: 1,
+        ArrayPattern: 2,
+        ArrowFunctionExpression: 3,
+        AssignmentExpression: 4,
+        AssignmentPattern: 5,
+        AwaitExpression: 6,
+        BinaryExpression: 7,
+        BlockStatement: 8,
+        BreakStatement: 9,
+        CallExpression: 10,
+        CatchClause: 11,
+        ClassBody: 12,
+        ClassDeclaration: 13,
+        ClassExpression: 14,
+        ComprehensionBlock: 15,
+        ComprehensionExpression: 16,
+        ConditionalExpression: 17,
+        ContinueStatement: 18,
+        DebuggerStatement: 19,
+        DirectiveStatement: 20,
+        DoWhileStatement: 21,
+        EmptyStatement: 22,
+        ExportAllDeclaration: 23,
+        ExportDefaultDeclaration: 24,
+        ExportNamedDeclaration: 25,
+        ExportSpecifier: 26,
+        ExpressionStatement: 27,
+        ForInStatement: 28,
+        ForOfStatement: 29,
+        ForStatement: 30,
+        FunctionDeclaration: 31,
+        FunctionExpression: 32,
+        GeneratorExpression: 33,
+        Identifier: 34,
+        IfStatement: 35,
+        ImportDeclaration: 36,
+        ImportDefaultSpecifier: 37,
+        ImportNamespaceSpecifier: 38,
+        ImportSpecifier: 39,
+        LabeledStatement: 40,
+        Literal: 41,
+        LogicalExpression: 42,
+        MemberExpression: 43,
+        MetaProperty: 44,
+        MethodDefinition: 45,
+        ModuleSpecifier: 46,
+        NewExpression: 47,
+        ObjectExpression: 48,
+        ObjectPattern: 49,
+        Program: 50,
+        Property: 51,
+        RestElement: 52,
+        ReturnStatement: 53,
+        SequenceExpression: 54,
+        SpreadElement: 55,
+        Super: 56,
+        SwitchCase: 57,
+        SwitchStatement: 58,
+        TaggedTemplateExpression: 59,
+        TemplateElement: 60,
+        TemplateLiteral: 61,
+        ThisExpression: 62,
+        ThrowStatement: 63,
+        TryStatement: 64,
+        UnaryExpression: 65,
+        UpdateExpression: 66,
+        VariableDeclaration: 67,
+        VariableDeclarator: 68,
+        WhileStatement: 69,
+        WithStatement: 70,
+        YieldExpression: 71
     };
 
     PlaceHolders = {
@@ -5635,6 +5710,10 @@
 
             if (extra.loc && options.source !== null && options.source !== undefined) {
                 extra.source = toString(options.source);
+            }
+
+            if (typeof options.enumerate === 'boolean' && options.enumerate) {
+                Syntax = enumSyntax;
             }
 
             if (typeof options.tokens === 'boolean' && options.tokens) {
